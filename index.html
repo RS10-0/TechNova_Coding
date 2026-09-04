@@ -311,16 +311,15 @@
                     <p class="text-lg text-gray-700 leading-relaxed mb-6">
                         <strong>TechNova</strong> was created to make technology education accessible, engaging, and empowering for young learners. We believe that cost, limited exposure, or a lack of confidence should never prevent a student from developing the technology skills that are becoming essential for the future.
                     </p>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        Through free, hands-on coding and technology classes, we create an environment where students are encouraged to experiment, ask questions, solve problems, and discover what they are capable of creating. Our lessons go beyond just presenting information or following a fixed curriculum. We adapt our instruction to students' needs and help them develop practical skills while building confidence, curiosity, and a genuine excitement for STEM.
-                    </p>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        Our vision is for every student to leave TechNova with valuable technological knowledge and the belief that STEM is a future they can pursue. Whether they ultimately choose a career in technology or apply these skills in another field, we want every learner to feel prepared for an increasingly tech-driven world. Regardless of previous knowledge or financial circumstance, we believe that every child should have the opportunity to explore technology and imagine themselves as a future leader, innovator, or creator!
-                    </p>
                     
-                    <a href="#meet-team" class="text-lg font-semibold text-primary-dark hover:text-gray-700 transition duration-300 border-b-2 border-primary-dark">
-                        Meet Our Team →
-                    </a>
+                    <div class="flex flex-wrap items-center gap-6">
+                        <button id="about-read-more" class="text-lg font-semibold text-primary-dark hover:text-gray-700 transition duration-300 border-b-2 border-primary-dark">
+                            Read More →
+                        </button>
+                        <a href="#meet-team" class="text-lg font-semibold text-primary-dark hover:text-gray-700 transition duration-300 border-b-2 border-primary-dark">
+                            Meet Our Team →
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -529,6 +528,26 @@
             </button>
         </div>
     </div>
+    <div id="about-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-2xl max-w-2xl w-full transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
+            
+            <h3 class="text-2xl sm:text-3xl font-bold text-primary-dark mb-6 text-center">About TechNova</h3>
+            <div class="text-left space-y-6">
+                <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                    <strong>TechNova</strong> was created to make technology education accessible, engaging, and empowering for young learners. We believe that cost, limited exposure, or a lack of confidence should never prevent a student from developing the technology skills that are becoming essential for the future.
+                </p>
+                <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                    Through free, hands-on coding and technology classes, we create an environment where students are encouraged to experiment, ask questions, solve problems, and discover what they are capable of creating. Our lessons go beyond just presenting information or following a fixed curriculum. We adapt our instruction to students' needs and help them develop practical skills while building confidence, curiosity, and a genuine excitement for STEM.
+                </p>
+                <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                    Our vision is for every student to leave TechNova with valuable technological knowledge and the belief that STEM is a future they can pursue. Whether they ultimately choose a career in technology or apply these skills in another field, we want every learner to feel prepared for an increasingly tech-driven world. Regardless of previous knowledge or financial circumstance, we believe that every child should have the opportunity to explore technology and imagine themselves as a future leader, innovator, or creator!
+                </p>
+            </div>
+            <button id="close-about-modal" class="mt-8 w-full py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100 transition duration-150">
+                Close
+            </button>
+        </div>
+    </div>
     <div id="weekly-classes-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden items-center justify-center z-50 p-4">
         <div class="bg-white p-6 sm:p-8 rounded-lg shadow-2xl max-w-2xl w-full transform transition-all duration-300 scale-100 max-h-[90vh] overflow-y-auto">
             
@@ -646,6 +665,28 @@
                 }
             });
             // ** END "MEET THE TEAM" MODAL JAVASCRIPT **
+            
+            // ** "ABOUT" MODAL JAVASCRIPT **
+            const aboutModal = document.getElementById('about-modal');
+            const aboutReadMoreButton = document.getElementById('about-read-more');
+            const closeAboutModalButton = document.getElementById('close-about-modal');
+            function openAboutModal(event) {
+                event.preventDefault();
+                aboutModal.classList.remove('hidden');
+                aboutModal.classList.add('flex');
+            }
+            function closeAboutModal() {
+                aboutModal.classList.add('hidden');
+                aboutModal.classList.remove('flex');
+            }
+            aboutReadMoreButton.addEventListener('click', openAboutModal);
+            closeAboutModalButton.addEventListener('click', closeAboutModal);
+            aboutModal.addEventListener('click', (event) => {
+                if (event.target === aboutModal) {
+                    closeAboutModal();
+                }
+            });
+            // ** END "ABOUT" MODAL JAVASCRIPT **
             
             // ** "WEEKLY CLASSES" MODAL JAVASCRIPT **
             const weeklyClassesModal = document.getElementById('weekly-classes-modal');
